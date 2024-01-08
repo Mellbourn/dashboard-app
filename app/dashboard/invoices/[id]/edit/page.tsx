@@ -4,9 +4,11 @@ import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Edit invoice',
-};
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  return {
+    title: `Edit invoice ${params.id}`,
+  };
+}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
